@@ -31,4 +31,11 @@ class Post_model extends CI_model{
         $this->db->where('id',$this->id);
         $this->db->update('post');
     }
+    public function armazenar($nome,$login,$senha){
+        $sql="INSERT INTO usuario(nome,login,senha)value(?,?,?)";
+        $dados=array($nome,$login,$senha);
+        $this->db->query($sql,$dados);
+
+        echo "Dados inseridos com sucesso!";
+    }
 }

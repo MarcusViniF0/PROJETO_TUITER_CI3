@@ -9,12 +9,14 @@ class Tuiter extends CI_Controller {
 		$dados['conteudo']="Vou colocar outro contéudo aqui!";
 		$this->load->view('index',$dados);
 	}
+
 	public function tuitar()
 	{
 		$this->load->view('nav');
 		$this->load->view('tuitar');
 		$this->load->view('rodape');
 	}
+
 	public function timeline()
 	{
 		$this->load->model('Post_model');
@@ -23,6 +25,7 @@ class Tuiter extends CI_Controller {
 		$this->load->view('timeline', $dados);
 		$this->load->view('rodape');
 	}
+
 	public function salvar(){
 		$this->load->model('Post_model');
 		$msg=$_POST["mensagem"];
@@ -30,12 +33,14 @@ class Tuiter extends CI_Controller {
 		$this->Post_model->inserir();
 		redirect('tuiter/timeline');
 	}
+
 	public function excluir(){
 		$this->load->model('Post_model');
 		$id =$this->uri->segment(3);
 		$this->Post_model->delete($id);
 		redirect('tuiter/timeline');
 	}
+
 	public function editar(){
 		$this->load->model('Post_model');
 		$id=$this->uri->segment(3);
@@ -44,6 +49,7 @@ class Tuiter extends CI_Controller {
 		$this->load->view('editar',$dados);
 		$this->load->view('rodape');
 	}
+
 	public function atualizar(){
 		$this->	load->model('Post_model');
 		$this->Post_model->id=$_POST["id"];
@@ -51,7 +57,25 @@ class Tuiter extends CI_Controller {
 		$this->Post_model->update();
 		redirect('tuiter/timeline');
 	}
+
 	public function home(){
 	redirect('/');
 	}
+
+	public function login(){
+		$this->load->view('login');
+		}
+
+	public function cadastro(){
+		$this->load->view('cadastro');
+		}
+
+	public function registrar(){
+		$name=$this->input->post('nome');
+		$login=$this->input->post('login');
+		$senha=$this->input->post('senha');
+
+		$this->load->model('Post_model');
+		$this->Post_model->armazenar($nome,$login,$senha);
+		}
 }
