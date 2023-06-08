@@ -38,4 +38,9 @@ class Post_model extends CI_model{
 
         echo "Dados inseridos com sucesso!";
     }
+    public function recuperarPorLoginESenha($login,$senha){
+        $sql="SELECT*FROM usuario where login=? and senha=?";
+        $dados=array($login,$senha);
+        return $this->db->query($sql,$dados)->result();
+    }
 }

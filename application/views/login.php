@@ -9,6 +9,7 @@
     <title>login</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Bem vindo ao resultado do CRUD CI3</a>
@@ -30,8 +31,9 @@
         <section id="form">
    <fieldset id="form_field">
        <legend id="form_legend">Login</legend>
-       <form  method="post"  action="_php/login.php">
-           Email:<br><input type="password" name="Senha">
+       <p><?=$this->session->flashdata("msg")?></p>
+       <form  method="post"  action="<?=base_url('index.php/Tuiter/autenticar')?>">
+           Email:<br><input type="text" name="Senha">
           </br>
            Senha:<br><input type="password" name="Senha">
           </br>

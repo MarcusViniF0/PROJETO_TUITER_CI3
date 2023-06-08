@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?=base_url()?>css2/estilo.css">
     <title>Cadastro</title>
 </head>
+<p><?=$this->session->flashdata("msg");?></p>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Bem vindo ao resultado do CRUD CI3</a>

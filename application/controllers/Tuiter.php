@@ -65,9 +65,25 @@ class Tuiter extends CI_Controller {
 	public function login(){
 		$this->load->view('login');
 		}
+		public function autenticar(){
+		$login=$this->input->post("login");
+		$senha=$this->input->post("senha");
+		
+		$this->load->model("post_model");
+		$usuario=$this->post_model->recuperarPorLoginESenha($login,md5($senha));
+			if($usuario){
+				$this->session->set_userdata("usuario",$usuario[0]);
+				redirect('/');
+			}else{
+				$this->session->set_flashdata("msg","Login ou senha inválidos");
+			redirect("Tuiter/login");
+			}
+	
+	}
 
 	public function cadastro(){
 		$this->load->view('cadastro');
+	
 		}
 
 	public function registrar(){
@@ -76,6 +92,9 @@ class Tuiter extends CI_Controller {
 		$senha=$this->input->post('senha');
 
 		$this->load->model('Post_model');
-		$this->Post_model->armazenar($nome,$login,$senha);
-		}
+		$this->Post_model->armazenar($nome,$login,md5($senha));
+
+		$this->session->set_flashdata("msg","Dados inseridos com sucesso!");
+		redirect('tuiter/cadastro');
+	}
 }
