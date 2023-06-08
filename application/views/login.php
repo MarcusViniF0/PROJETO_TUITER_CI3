@@ -33,9 +33,11 @@
        <legend id="form_legend">Login</legend>
        <p><?=$this->session->flashdata("msg")?></p>
        <form  method="post"  action="<?=base_url('index.php/Tuiter/autenticar')?>">
-           Email:<br><input type="text" name="Senha">
+           <label for="login">Email:</label><br>
+           <input type="text" name="login">
           </br>
-           Senha:<br><input type="password" name="Senha">
+          <label for="senha">Senha:</label><br>
+          <input type="password" name="senha">
           </br>
            <input id="botao" type="submit" value="Entrar"><br>
            <input type="reset" id="botao" value="Cancelar"><br>
